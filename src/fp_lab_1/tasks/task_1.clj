@@ -26,6 +26,7 @@
   )
 
 ;; Хвостовая рекурсия
+; todo REWRITE
 (defn tail-rec [n]
   (if (= n 0) 0
               (if (or (zero? (rem n 3))

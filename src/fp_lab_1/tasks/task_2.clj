@@ -38,6 +38,7 @@
 
 
 ; Хвостовая рекурсия
+; todo REWRITE
 (defn tail-rec [n]
   (if (= n 2) 0
               (if (= n (sum-of-fifth-powers n)) (+ n (tail-rec (- n 1)))
