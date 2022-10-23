@@ -8,13 +8,13 @@
   (testing "Test task 2 modular"
     (is (= (modular) answer))))
 
-;(deftest recursive-test-task-2
-;  (testing "Test task 2 recursive"
-;    (is (= (rec 0) answer))))
+(deftest recursive-test-task-2
+  (testing "Test task 2 recursive"
+    (is (= (rec (exp 10 6)) answer))))
 
-;(deftest tail-recursive-test-task-2
-;  (testing "Test task 2 tail recursion"
-;    (is (= (tail-rec (exp 10 6)) answer))))
+(deftest tail-recursive-test-task-2
+  (testing "Test task 2 tail recursion"
+    (is (= (tail-rec (exp 10 6)) answer))))
 
 ;(deftest map-test-task-2
 ;  (testing "Test task 2 with map"

@@ -10,8 +10,6 @@
 (defn sum-of-fifth-powers [num]
   (reduce + (map #(exp % 5) (as-digits num))))
 
-(sum-of-fifth-powers 22)
-
 
 ; Модульная реализация
 (def gen-seq
@@ -30,27 +28,21 @@
 
 
 ; Рекурсия
-; todo
-;(defn rec [n]
-;  (if (< n (exp 10 6))
-;    (if (= n (sum-of-fifth-powers n))
-;      (+ n (rec (+ n 1)))
-;      (rec (+ n 1)))
-;    0)
-;  )
-;
-;(rec 2)
+(defn rec [n]
+  (if (> n 2)
+    (if (= n (sum-of-fifth-powers n))
+      (+ n (rec (- n 1)))
+      (rec (- n 1)))
+    (if (= n 2) 0 n))
+  )
 
 
 ; Хвостовая рекурсия
-; todo
-;(defn tail-rec [n]
-;  (if (= n 0) 0
-;                (if (= n (sum-of-fifth-powers n)) (+ n (tail-rec (- n 1)))
-;                (tail-rec (- n 1))))
-;  )
-;
-;(tail-rec (exp 10 6))
+(defn tail-rec [n]
+  (if (= n 2) 0
+              (if (= n (sum-of-fifth-powers n)) (+ n (tail-rec (- n 1)))
+                                                (tail-rec (- n 1))))
+  )
 
 
 ; Генерация с map
