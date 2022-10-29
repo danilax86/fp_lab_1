@@ -16,9 +16,9 @@
   (testing "Test task 2 tail recursion"
     (is (= (tail-rec (exp 10 6)) answer))))
 
-;(deftest map-test-task-2
-;  (testing "Test task 2 with map"
-;    (is (= (solve-map) answer))))
+(deftest map-test-task-2
+  (testing "Test task 2 with map"
+    (is (= (solve-map) answer))))
 
 (deftest lazy-test-task-2
   (testing "Test task 2 lazy-seq"

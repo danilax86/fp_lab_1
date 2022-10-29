@@ -45,21 +45,26 @@
   )
 
 
-; Генерация с map
-; todo
-;(defn solve-map []
-;  )
-;
-;(solve-map)
-
-
-; Ленивые коллекции
 (defn positive-numbers
   ([] (positive-numbers 1))
   ([n] (lazy-seq
          (cons n                                            ; Добавляем к последовательности элемент n
                (positive-numbers (inc n))))))
 
+
+; Генерация с map
+(defn solve-map []
+  (reduce +                                                 ; Складываем элементы
+          (remove zero?                                     ; Избавляемся от нулей в последовательности
+                  (map #(* %                                ; Заменяем нулями числа, которые не подходят под условие
+                           (if (= % (sum-of-fifth-powers %)) 1 0))
+        (take (exp 10 6)
+              (drop 1 (positive-numbers)))))))
+
+(solve-map)
+
+
+; Ленивые коллекции
 (defn solve-lazy []
   (reduce +
           (filter #(= % (sum-of-fifth-powers %))
