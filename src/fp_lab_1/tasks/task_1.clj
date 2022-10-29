@@ -17,7 +17,7 @@
 
 ; Рекурсия
 (defn rec [n]
-  (if (and (< n 1000))
+  (if  (< n 1000)
     (if (or (zero? (rem n 3))
             (zero? (rem n 5)))
       (+ n (rec (+ n 1)))
