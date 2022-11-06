@@ -10,11 +10,11 @@
 
 (deftest recursive-test-task-2
   (testing "Test task 2 recursive"
-    (is (= (rec (exp 10 6)) answer))))
+    (is (= (rec limit) answer))))
 
 (deftest tail-recursive-test-task-2
   (testing "Test task 2 tail recursion"
-    (is (= (tail-rec (exp 10 6)) answer))))
+    (is (= (tail-rec limit) answer))))
 
 (deftest map-test-task-2
   (testing "Test task 2 with map"

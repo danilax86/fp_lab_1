@@ -1,6 +1,8 @@
 (ns fp-lab-1.tasks.task-2)
 
 ; Заготовочки
+(def limit 295245)
+
 (defn exp [x n]
   (reduce * (repeat n x)))
 
@@ -13,7 +15,7 @@
 
 ; Модульная реализация
 (def gen-seq
-  (range 2 (exp 10 6)))
+  (range 2 limit))
 
 (def filtered-seq
   (filter #(= % (sum-of-fifth-powers %))
@@ -58,7 +60,7 @@
           (remove zero?                                     ; Избавляемся от нулей в последовательности
                   (map #(* %                                ; Заменяем нулями числа, которые не подходят под условие
                            (if (= % (sum-of-fifth-powers %)) 1 0))
-        (take (exp 10 6)
+        (take 354294
               (drop 1 (positive-numbers)))))))
 
 (solve-map)
@@ -68,5 +70,5 @@
 (defn solve-lazy []
   (reduce +
           (filter #(= % (sum-of-fifth-powers %))
-                  (take (exp 10 6)
+                  (take 354294
                         (drop 1 (positive-numbers))))))     ; drop 1 -- исключаем всё, что ниже 2-х

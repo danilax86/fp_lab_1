@@ -102,11 +102,11 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 ## Problem 2
 Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
 
-    1634 = 14 + 64 + 34 + 44
-    8208 = 84 + 24 + 04 + 84
-    9474 = 94 + 44 + 74 + 44
+    1634 = 1^4 + 6^4 + 3^4 + 4^4
+    8208 = 8^4 + 2^4 + 0^4 + 8^4
+    9474 = 9^4 + 4^4 + 7^4 + 4^4
 
-As 1 = 14 is not a sum it is not included.
+As 1 = 1^4 is not a sum it is not included.
 
 The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 
@@ -114,8 +114,15 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 
 ### Solution
 
+Здесь максимальное значение элемента последовательности нужно брать как k * (10 - 1)^5 = 295245.
+`k` -- минимальное количетсво цифр, на котором закончится программа; 5 -- в данном случае
+`10` -- потому что числа с основанием 10, логично.
+
+
 #### Заготовочки
 ```clojure
+(def limit 295245)
+
 (defn exp [x n]
   (reduce * (repeat n x)))
 
@@ -129,7 +136,7 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 #### Модульная реалиазция
 ```clojure
 (def gen-seq
-  (range 2 (exp 10 6)))
+  (range 2 limit))
 
 (def filtered-seq
   (filter #(= % (sum-of-fifth-powers %))
@@ -173,7 +180,7 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
           (remove zero?                          ; Избавляемся от нулей в последовательности
                   (map #(* %                     ; Заменяем нулями числа, которые не подходят под условие
                            (if (= % (sum-of-fifth-powers %)) 1 0))
-        (take (exp 10 6)
+        (take limit
               (drop 1 (positive-numbers)))))))
 ```
 
@@ -182,7 +189,7 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 (defn solve-lazy []
   (reduce +
           (filter #(= % (sum-of-fifth-powers %))
-                  (take (exp 10 6)
+                  (take limit
                         (drop 1 (positive-numbers))))))     ; drop 1 -- исключаем всё, что ниже 2-х
 
 ```
@@ -200,11 +207,11 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 
 (deftest recursive-test-task-2
   (testing "Test task 2 recursive"
-    (is (= (rec (exp 10 6)) answer))))
+    (is (= (rec limit) answer))))
 
 (deftest tail-recursive-test-task-2
   (testing "Test task 2 tail recursion"
-    (is (= (tail-rec (exp 10 6)) answer))))
+    (is (= (tail-rec limit) answer))))
 
 (deftest map-test-task-2
   (testing "Test task 2 with map"
