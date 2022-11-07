@@ -4,22 +4,10 @@
 
 (def answer 443839)
 
-(deftest modular-test-task-2
-  (testing "Test task 2 modular"
-    (is (= (modular) answer))))
-
-(deftest recursive-test-task-2
-  (testing "Test task 2 recursive"
-    (is (= (rec limit) answer))))
-
-(deftest tail-recursive-test-task-2
-  (testing "Test task 2 tail recursion"
-    (is (= (tail-rec limit) answer))))
-
-(deftest map-test-task-2
-  (testing "Test task 2 with map"
-    (is (= (solve-map) answer))))
-
-(deftest lazy-test-task-2
-  (testing "Test task 2 lazy-seq"
+(deftest test-task-2
+  (testing "Test task 2"
+    (is (= (modular) answer))
+    (is (= (rec limit) answer))
+    (is (= (tail-rec limit) answer))
+    (is (= (solve-map) answer))
     (is (= (solve-lazy) answer))))

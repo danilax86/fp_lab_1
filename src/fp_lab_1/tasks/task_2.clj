@@ -25,8 +25,7 @@
   (reduce + filtered-seq))
 
 (defn modular []
-  sum-seq-elms
-  )
+  sum-seq-elms)
 
 
 ; Рекурсия
@@ -35,16 +34,14 @@
     (if (= n (sum-of-fifth-powers n))
       (+ n (rec (- n 1)))
       (rec (- n 1)))
-    (if (= n 2) 0 n))
-  )
+    (if (= n 2) 0 n)))
 
 
 ; Хвостовая рекурсия
 (defn tail-rec [n]
   (if (= n 2) 0
               (if (= n (sum-of-fifth-powers n)) (+ n (tail-rec (- n 1)))
-                                                (tail-rec (- n 1))))
-  )
+                                                (tail-rec (- n 1)))))
 
 
 (defn positive-numbers
@@ -62,8 +59,6 @@
                            (if (= % (sum-of-fifth-powers %)) 1 0))
         (take 354294
               (drop 1 (positive-numbers)))))))
-
-(solve-map)
 
 
 ; Ленивые коллекции
